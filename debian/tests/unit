@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+set -E
+
+function cleanup() {
+		make clean
+		dh_autoreconf_clean
+		patch -p1 -R < debian/tests/patches/system-epubgen.diff
+}
+
+trap cleanup ERR
+
+patch -p1 < debian/tests/patches/system-epubgen.diff
+dh_autoreconf
+dh_auto_configure
+cd src/test && make check
+cd ../..
+
+cleanup

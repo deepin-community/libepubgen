@@ -1,0 +1,50 @@
+libepubgen (0.1.1-1) unstable; urgency=medium
+
+  [ Olivier Tilloy ]
+  * debian/control, debian/*.install, debian/rules: make the packages
+    multi-arch compliant
+  * debian/tests/control, debian/tests/unit: run a subset of unit tests
+    as DEP-8 tests
+  
+  [ Rene Engelhard ]
+  * debian/tests/patches/system-epubgen.diff: patch make check to use
+    system-epubgen
+  * debian/tests/unit: run make check properly
+  * New upstream version 0.1.1
+
+ -- Rene Engelhard <rene@debian.org>  Sun, 03 Jun 2018 21:26:38 +0200
+
+libepubgen (0.1.0-2) unstable; urgency=medium
+
+  * upload to unstable
+
+ -- Rene Engelhard <rene@debian.org>  Sun, 17 Dec 2017 00:55:52 +0100
+
+libepubgen (0.1.0-1) experimental; urgency=medium
+
+  * New upstream version 0.1.0
+
+  * libepubgen-0.0-0 -> libepubgen-0.1-1
+  * add new libxml2-dev build-dependency
+  * fix debian/copyright
+
+ -- Rene Engelhard <rene@debian.org>  Thu, 14 Dec 2017 14:26:24 +0100
+
+libepubgen (0.0.1-1) unstable; urgency=medium
+
+  * New upstream version 0.0.1
+  * move Maintainer: to Debian LibreOffice Maintainers
+
+ -- Rene Engelhard <rene@debian.org>  Sun, 06 Aug 2017 13:01:19 +0200
+
+libepubgen (0.0.0-2) unstable; urgency=low
+
+  * upload to unstable 
+
+ -- Rene Engelhard <rene@debian.org>  Thu, 31 Jul 2014 21:02:36 +0200
+
+libepubgen (0.0.0-1) experimental; urgency=low
+
+  * Initial release 
+
+ -- Rene Engelhard <rene@debian.org>  Fri, 18 Jul 2014 19:09:14 +0200

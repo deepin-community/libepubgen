@@ -1,0 +1,40 @@
+libepubgen-0.1.1
+
+- Avoid <div> inside <p> or <span>.
+- Avoid writin vertical-align attribute without a value.
+- Fix generation of invalid XHTML when there is a link starting at the
+  beginning of a footnote.
+- Handle relative width for images.
+- Fixed layout: write chapter names to improve navigation.
+- Support writing mode.
+- Start a new HTML file at every page span in addition to the splits
+  induced by the chosen split method. This is to ensure that specified
+  writing mode works correctly, as it is HTML <body> attribute.
+- Improve tests.
+- Add a basic support for ruby.
+- Configure: disable treating of compiler warnings as errors by default.
+- Various minor fixes and code cleanups.
+
+libepubgen-0.1.0
+
+- Fix various validation problems, pointed out by epubcheck.
+- Add EPUB3 support.
+- Split on headings: add user-friendly section names.
+- Support writing CSS styles inline in the XHTML streams.
+- Support various image wrap types.
+- Support embedded fonts.
+- Support cover images.
+- Support footnotes.
+- Support EPUB3 fixed layout.
+
+libepubgen-0.0.1
+
+- Fix escaping of HTML entities.
+- Use symbol visibility on Linux. The library only exports public
+  classes/functions now.
+- Print debugging output to stderr.
+- Switch to C++11.
+
+libepubgen-0.0.0
+
+- First release.

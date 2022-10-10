@@ -1,0 +1,32 @@
+diff --git a/src/test/Makefile.am b/src/test/Makefile.am
+index 9599846..e4b1db5 100644
+--- a/src/test/Makefile.am
++++ b/src/test/Makefile.am
+@@ -5,25 +5,21 @@ target_test = test
+ check_PROGRAMS = $(target_test)
+ 
+ AM_CXXFLAGS = \
+-	-I$(top_srcdir)/inc \
+-	-I$(top_srcdir)/src/lib \
+ 	$(CPPUNIT_CFLAGS) \
+ 	$(LIBXML_CFLAGS) \
+ 	$(REVENGE_CFLAGS) \
+ 	$(REVENGE_STREAM_CFLAGS) \
++	$(shell pkg-config --cflags libepubgen-@EPUBGEN_MAJOR_VERSION@.@EPUBGEN_MINOR_VERSION@)
+ 	$(DEBUG_CXXFLAGS)
+ 
+-test_LDFLAGS = -L$(top_srcdir)/src/lib
++test_LDFLAGS = $(shell pkg-config --libs libepubgen-@EPUBGEN_MAJOR_VERSION@.@EPUBGEN_MINOR_VERSION@)
+ test_LDADD = \
+-	$(top_builddir)/src/lib/libepubgen_internal.la \
+-	$(top_builddir)/src/lib/libepubgen-@EPUBGEN_MAJOR_VERSION@.@EPUBGEN_MINOR_VERSION@.la \
+ 	$(CPPUNIT_LIBS) \
+ 	$(LIBXML_LIBS) \
+ 	$(REVENGE_LIBS) \
+ 	$(REVENGE_STREAM_LIBS)
+ 
+ test_SOURCES = \
+-	EPUBPathTest.cpp \
+ 	EPUBTextGeneratorTest.cpp \
+ 	test.cpp
+ 

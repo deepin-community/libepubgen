@@ -1,0 +1,20 @@
+* All generators
+- Handle drawing objects (convert to SVG images?)
+- Handle embedded fonts.
+- Handle embedded images.
+- Handle embedded documents.
+- Implement "best" splitting method.
+- Put footnotes into separate file(s).
+- Handle links.
+
+* Text generator
+- Implement text splitting based on chapters (requres explicitly marked headings
+  in the input).
+
+* Drawing generators
+- Handle master pages.
+- Sort objects for output by their position on the page. Currently they are
+  emitted in the same order they have been received, which, if the library is
+  used directly with one of the import libraries, can be completely random. This
+  implies handling of master pages and layers.
+- Make size-based splitting work.

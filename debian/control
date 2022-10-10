@@ -1,0 +1,38 @@
+Source: libepubgen
+Priority: optional
+Maintainer: Debian LibreOffice Maintainers <debian-openoffice@lists.debian.org>
+Uploaders: Rene Engelhard <rene@debian.org>
+Build-Depends: autotools-dev,
+               dh-autoreconf,
+               debhelper (>= 9),
+               doxygen,
+               libboost-dev,
+               libcppunit-dev,
+               librevenge-dev,
+               libxml2-dev,
+               pkg-config
+Standards-Version: 3.9.4
+Section: libs
+Homepage: http://libepubgen.sourceforge.net
+
+Package: libepubgen-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: libepubgen-0.1-1 (= ${binary:Version}),
+         librevenge-dev,
+         ${misc:Depends}
+Description: EPUB generator library -- development
+ is a library for generating EPUB documents. It is directly
+ pluggable into import filters based on librevenge.
+ .
+ This package contains the development files (headers, ...)
+
+Package: libepubgen-0.1-1
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: EPUB generator library
+ is a library for generating EPUB documents. It is directly
+ pluggable into import filters based on librevenge.
+

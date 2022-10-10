@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+                                                                       
+Name: libepubgen-@EPUBGEN_MAJOR_VERSION@.@EPUBGEN_MINOR_VERSION@
+Description: EPUB generator library for librevenge
+Version: @VERSION@
+Requires: librevenge-0.0
+Libs: -L${libdir} -lepubgen-@EPUBGEN_MAJOR_VERSION@.@EPUBGEN_MINOR_VERSION@
+Cflags: -I${includedir}/libepubgen-@EPUBGEN_MAJOR_VERSION@.@EPUBGEN_MINOR_VERSION@

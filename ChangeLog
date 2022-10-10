@@ -1,0 +1,1367 @@
+2018-06-03  David Tardon  <dtardon@redhat.com>  [fd2ae0e844db71dbd8feaf65fbfdd9b88d43b201]
+
+	prepare for a release
+
+
+2018-05-05  David Tardon  <dtardon@redhat.com>  [a6e5b2f011654357d2057b4b170a661a6bee3072]
+
+	disable werror by default
+
+
+2018-04-24  Mark Hung  <marklh9@gmail.com>  [fbb6a8ed14f81361ba73cee304a3dbe9ec232263]
+
+	Make EPUBSpanStyleManager a base calss of EPUBBodyStyleManager.
+
+	The new EPUBBodyStyleManager::extractProperties was
+	EPUBSpanStyleManager::extractBodyProperties().
+
+2018-04-24  Mark Hung  <marklh9@gmail.com>  [aa254c9e6f2d1ecfa2512111746a77c05ba9717f]
+
+	Enclose <span> with <ruby> if text:ruby-text is set.
+
+
+2018-04-18  Mark Hung  <marklh9@gmail.com>  [c256f0a9383647cde947243c6be1b5b1f7d5fb23]
+
+	assertXPathContent -> CPPUNIT_ASSERT_XPATH_CONTENT
+
+	So that the line number shows up when the assertion fails.
+
+2018-04-17  Mark Hung  <marklh9@gmail.com>  [722cfb26c481719493b5cf77dc62af997fbe6450]
+
+	assertXPath -> CPPUNIT_ASSERT_XPATH to catch the line number.
+
+
+2018-04-11  Mark Hung  <marklh9@gmail.com>  [096f9f5a703c73ec2cd4e7fc04122338495b5a8b]
+
+	Use an independent object for body style manager.
+
+	Original body style manager is mixed in EPUBSpanStyleManager.
+
+	Refactor a little bit so that it depend less on checking
+	whether it is taking care of a body or a span element, as a
+	preparation step for further refacoring.
+
+	This revert part of 9a284081eea4a95235a6d6a6a50cbe3f7ad323ba
+
+2018-04-05  Mark Hung  <marklh9@gmail.com>  [48117c86ecc3073eab043733641297a079b31431]
+
+	assertXPath -> CPPUNIT_ASSERT_XPATH_ATTRIBUTE
+
+	To display the line number when assertion failed.
+
+2018-04-04  Mark Hung  <marklh9@gmail.com>  [042c1562c647feb8cb288eef30bfc31f58cbaf12]
+
+	Replace assertCss with CPPUNIT_ASSERT_CSS.
+
+	So that the source line is displayed when test breaks.
+
+2018-03-28  Mark Hung  <marklh9@gmail.com>  [1f602fcaa74fc9dbc6457019d11c602ff4040a4e]
+
+	Ensure page properties in the page span works.
+
+	As the page properties are converted to CSS styles of the
+	body element, this patch force it to start a new HTML file
+	when openPageSpan is invoked to open the second page span.
+
+	This ensures that page properties in every page span works,
+	even there are multiple page spans between intentional HTML
+	page splits such as on size, on headings, or on page breaks.
+
+2018-03-27  Mark Hung  <marklh9@gmail.com>  [0318031b9094b9180d1d391d0ca31a782b016e99]
+
+	Always keep page properties when splitting the HTML file.
+
+	Those page properties shall be changed only via openPageSpan.
+	It was kept only when the layout out method is EPUB_LAYOUT_METHOD_FIXED
+	before.
+
+2018-03-26  Mark Hung  <marklh9@gmail.com>  [9a284081eea4a95235a6d6a6a50cbe3f7ad323ba]
+
+	Support writing-mode for reflowable layout method.
+
+	Convert style:writing-mode in page properties to css style for
+	HTML body element. The class names of body elements will be like
+	"body0".
+
+2018-03-24  David Tardon  <dtardon@redhat.com>  [50321a1dbecb428ac56a6c23a4eb5c102bc839fc]
+
+	rename EPUBXMLSink to EPUBXMLContent
+
+	There are too many things called 'sink' in this project...
+
+2018-03-24  David Tardon  <dtardon@redhat.com>  [9b903cbc983891c770db90b76832b44fe9481b8b]
+
+	rename EPUBBinarySink to EPUBBinaryContent
+
+	There are too many things called 'sink' in this project...
+
+2018-03-24  David Tardon  <dtardon@redhat.com>  [f59ab80216dcae492e7e6e6f3f01292a6a34a38b]
+
+	rename EPUBCSSSink to EPUBCSSContent
+
+	There are too many things called 'sink' in this project...
+
+2018-02-03  David Tardon  <dtardon@redhat.com>  [30e51ff79b984372ea15159417fd1a440e298905]
+
+	drop unused deleter
+
+
+2018-02-03  David Tardon  <dtardon@redhat.com>  [3718a2798d4b25e1a153fabf9c6adce807d263e7]
+
+	drop unused typedef
+
+
+2018-02-03  David Tardon  <dtardon@redhat.com>  [231f47c0c20547ad5dd9a2e6454d6ef3c53fc885]
+
+	use make_shared
+
+
+2018-02-03  David Tardon  <dtardon@redhat.com>  [cbb329c6bb88a810f4c3b39fdac03d7e35606509]
+
+	drop unnecessary typedef
+
+
+2018-02-03  David Tardon  <dtardon@redhat.com>  [d009c267bfc486829ea7dd5a6c89f3172f6a9b4d]
+
+	drop typedef
+
+
+2018-02-03  David Tardon  <dtardon@redhat.com>  [edfd90c522ee82cb662a5b7137aec266822bf2a2]
+
+	split EPUBFontManager into separate file
+
+
+2018-02-03  David Tardon  <dtardon@redhat.com>  [13d536cde294c49c59f46e67757693ac83dcaf6b]
+
+	iwyu: prune includes
+
+
+2018-02-03  David Tardon  <dtardon@redhat.com>  [7e47b278ce9c8942c7df459120a8e65ac0e0b496]
+
+	put own header first
+
+
+2018-02-03  David Tardon  <dtardon@redhat.com>  [6ad037a4fdeef1025f8c56ddd2655ee9be69a542]
+
+	avoid conversion to inches
+
+
+2018-02-01  David Tardon  <dtardon@redhat.com>  [159705cd934725a45926ecc78145325eb518d46f]
+
+	WaE: unnecessary parentheses in declaration of 'type'
+
+
+2018-02-01  David Tardon  <dtardon@redhat.com>  [bc1588367984c84f386a2c4155869f0b392ff857]
+
+	WaE: unnecessary parentheses in declaration of 'type'
+
+
+2018-02-01  David Tardon  <dtardon@redhat.com>  [2431170b678ca8785c9c398769560f232fbfe2f0]
+
+	WaE: unnecessary parentheses in declaration of 'type'
+
+
+2018-02-01  David Tardon  <dtardon@redhat.com>  [e1e1fc97056fd7d07cd8fd8d5aac91ff8d79707c]
+
+	WaE: unnecessary parentheses in declaration of 'types'
+
+
+2018-01-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [b6081f659e3000d9f3d5851278d8abdd33448353]
+
+	fixed layout: avoid Page <N> entries when chapter names are provided
+
+
+2018-01-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [c081609849b18113340c39a73b6af432a103a102]
+
+	fixed layout: allow defining chapter names
+
+	Fixed layout normally just works with SVG images (one image / page), but
+	readable navigation document is still expected, e.g. PDF provides it. So
+	add a way to mention what chapters start on a given page.
+
+2018-01-18  Miklos Vajna  <vmiklos@collabora.co.uk>  [51e17dc87d85f1dc71b380906f9260de4cd0371c]
+
+	EPUBImageManager: handle relative and absolute width
+
+
+2017-12-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [60baa7fb597cde57c3489d8b5066937e7edb779f]
+
+	EPUBHTMLGenerator: fix invalid XHTML with links at footnote start
+
+	ERROR(RSC-005): test3.epub/OEBPS/sections/section0001.xhtml(2,568): Error while parsing file: The a element must not appear inside a elements.
+
+2017-12-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [a97e7f40bddba8e5d572b29811a19f34536190dc]
+
+	EPUBTableStyleManager: avoid vertical-align key without value
+
+	ERROR(CSS-008): test.epub/OEBPS/styles/stylesheet.css(1625,19): An error occurred while parsing the CSS: Token ';' not allowed here, expecting a property value.
+
+2017-12-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [006848cb62225647c418d5143d4e88a9d73829da]
+
+	EPUBHTMLGenerator: avoid <div> inside <p> and/or <span>
+
+	This is not allowed in XHTML, but we wrote that markup when a text frame
+	was inside a span or a paragraph. The closest allowed markup in XHTML
+	seems to be closing the span/paragraph before opening the text box and
+	doing the opposite after the text box is closed.
+
+2017-12-13  David Tardon  <dtardon@redhat.com>  [65f070609482c10410311dbd42fca1739bca293e]
+
+	bump release
+
+
+2017-12-13  David Tardon  <dtardon@redhat.com>  [593447a1a855a6470dc0d7c5e8d8d60a55c1e693]
+
+	WaE: remove unused function
+
+
+2017-12-13  David Tardon  <dtardon@redhat.com>  [f4514f4ad225b87a8ded9b7ff965568eb7827fe6]
+
+	prepare for a release
+
+
+2017-12-01  Miklos Vajna  <vmiklos@collabora.co.uk>  [99f0e7ec6fbaef4ff71d51e3ff700e3038f88748]
+
+	Move EPUBSplitMethod from the generator constructors
+
+	To a case of setOption(). Also check for version >= 30, and not for ==
+	30, so e.g. 31 defaults to 30 and not 20 (in an else branch).
+
+2017-12-01  Miklos Vajna  <vmiklos@collabora.co.uk>  [75c4fb3bb96c6e6777a4dc6e6b035b494daa9116]
+
+	EPUBTextGenerator: setOptions() -> setOption() to keep it simple
+
+
+2017-12-01  Miklos Vajna  <vmiklos@collabora.co.uk>  [2ecb8443af7769df0764f41a4b23af9ba6d22c98]
+
+	EPUBTextGenerator: default to EPUB3
+
+	The next release will be an API-breaking one anyway.
+
+2017-12-01  Miklos Vajna  <vmiklos@collabora.co.uk>  [f9386051137c0f20bb5b0558262a6020636a8518]
+
+	NEWS: prepare for a release
+
+
+2017-12-01  Miklos Vajna  <vmiklos@collabora.co.uk>  [35407d886084160415c6e96416d71a02804a16ca]
+
+	EPUBTextGenerator: replace set*Method() with setOptions()
+
+	These were not in a release yet, so cheap to remove. OTOH adding a
+	generic function allows addition of further options without an ABI break
+	in the future.
+
+2017-12-01  Miklos Vajna  <vmiklos@collabora.co.uk>  [fce595008f94e91d18448275dc3c2d6370eec5c7]
+
+	Fixed layout: spine items are pages, not sections
+
+
+2017-11-30  Miklos Vajna  <vmiklos@collabora.co.uk>  [88b9d9a1efb9b064ea99c57ec273f76712d361ff]
+
+	EPUBTextGenerator: allow a single image on a page
+
+
+2017-11-29  Miklos Vajna  <vmiklos@collabora.co.uk>  [d9921c47befa3eabcfc916e26e273667232be637]
+
+	EPUBTextGenerator: page-break=auto is not a page break
+
+
+2017-11-29  Miklos Vajna  <vmiklos@collabora.co.uk>  [38aa728708641942371507b975193f0ab60f0b50]
+
+	EPUBGenerator: fixed layout implies split on page break
+
+
+2017-11-28  Miklos Vajna  <vmiklos@collabora.co.uk>  [bd49e1672d0e914736824dadc8f89c26ae955088]
+
+	[ABI CHANGE] optionally support the EPUB3 fixed layout
+
+	Default is still the reflowable method, of course.
+
+2017-11-24  Miklos Vajna  <vmiklos@collabora.co.uk>  [6e094bbe9fd8c1784ef3c348d04e2add8b48fc67]
+
+	EPUBHTMLGenerator: support image popup for text
+
+	And also make sure that the popup anchor is not superscript.
+
+2017-11-24  Miklos Vajna  <vmiklos@collabora.co.uk>  [bc80bf98172e8e0f8c803dec0b8e74e233ac482e]
+
+	EPUBHTMLGenerator: support image popup for images
+
+	If the user of the lib uses the librevenge:mime-type and
+	office:binary-data keys (instead of xlink:href) for a link around an
+	image, then open that image in a popup (using the footnote markup).
+
+	The usual assumption is that the footnote anchor is trivial (just a
+	string) and the content is complex, but here the situation is the
+	opposite: the anchor can be something complex, OTOH the footnote content
+	is always a single inline image -- this requires the new
+	closeAnchor mode when adding the footnote label.
+
+2017-11-24  Miklos Vajna  <vmiklos@collabora.co.uk>  [cdf53305d151cf177257821b21cd9895321a86e5]
+
+	EPUBTextSink: remove this, dead code
+
+	< vmiklos> dtardon: is EPUBTextSink dead code?
+	<@dtardon> vmiklos, i don't remember :-(
+
+2017-11-24  Miklos Vajna  <vmiklos@collabora.co.uk>  [a8444b113df52769849ad45ea440def8d1884b15]
+
+	EPUBHTMLGenerator: implement custom footnote anchor text
+
+	Try to avoid our default F<N> anchor text if possible, which only makes
+	sense in English.
+
+2017-11-24  Miklos Vajna  <vmiklos@collabora.co.uk>  [502948041df07729572bf4f2b222e03073baa6c8]
+
+	EPUBHTMLGenerator: implement EPUB3 footnote markup
+
+	The main difference is that in the EPUB3 case the footnote has an
+	explicit end.
+
+2017-11-23  Miklos Vajna  <vmiklos@collabora.co.uk>  [9c723bbe42673906d8d0faf5083a186cf86d05ce]
+
+	EPUBHTMLGenerator: avoid <title> in EPUB3 XHTML content documents
+
+	- there were multiple of them, which is invalid
+	- just don't write them, content.opf has the same info
+
+2017-11-23  Miklos Vajna  <vmiklos@collabora.co.uk>  [8c447caee18b4400170ecce36ea3714fdc377989]
+
+	EPUBHTMLGenerator: fix footnotes/endnotes/comments
+
+	There were two problems here:
+
+	- when working with two sinks (footnote and main), make sure that we
+	  save the main one before the push of the sink stack
+
+	- when handing out a non-const xml sink reference, make sure there is no
+	  parallel empty bool that tracks its size, otherwise these can out of
+	  sync (empty is still true, even if there is footnote content)
+
+2017-11-21  Miklos Vajna  <vmiklos@collabora.co.uk>  [631b21834883aa8f2ee83a20717dd37900331696]
+
+	EPUBGenerator: allow overwriting dc:identifier default
+
+	All other types had a way to be overwritten.
+
+2017-11-17  Miklos Vajna  <vmiklos@collabora.co.uk>  [0d06b60d45b3e1465976eb027c3fde31fccdc025]
+
+	EPUBGenerator: add support for cover image metadata
+
+	The librevenge:cover-images key can't have a property list as a value,
+	so go with a list of cover images, though in practice more than one
+	won't result in a valid EPUB3 file.
+
+2017-11-16  Miklos Vajna  <vmiklos@collabora.co.uk>  [889add1be67b8ddcd93c9dd306f2b73275ead5a0]
+
+	EPUBFontManager: map ODF mime type to EPUB mime type
+
+
+2017-11-16  David Tardon  <dtardon@redhat.com>  [73f5e40c90c32f8a48fef037558146a126cdab3a]
+
+	WaE: suggest braces around empty body in an 'if' statement
+
+
+2017-11-15  Miklos Vajna  <vmiklos@collabora.co.uk>  [9e571ba79d782d3e780f657c745b0447d45e51e6]
+
+	EPUBFontManager: fold this into EPUBImageManager
+
+	After all it's a small class, sounds like it is not worth having that
+	much boilerplate for it.
+
+2017-11-15  Miklos Vajna  <vmiklos@collabora.co.uk>  [ee5201290e8160c28fca45ebb79acad1d1ee705a]
+
+	Add a font manager for initial embedded font support
+
+	The epubcheck validator insists on opentype as for the format of the
+	font, but as far as I see at least Calibre is happy with the same data
+	as it's in ODF already, so no need to do any heavy font conversion.
+
+2017-11-10  Miklos Vajna  <vmiklos@collabora.co.uk>  [3da66e7b1fbda75e43b3ab63502d66097f39ef7a]
+
+	EPUBImageManager: handle text box wrap types
+
+	By sharing the image and textbox wrap code.
+
+2017-11-10  Miklos Vajna  <vmiklos@collabora.co.uk>  [da840df8eaacfcfbd93d82751a774371d7e5c9b9]
+
+	EPUBHTMLGenerator: avoid wrap type for as-char anchored images
+
+
+2017-11-10  Miklos Vajna  <vmiklos@collabora.co.uk>  [40111db25a92537c922a768dd04916cb5edd0239]
+
+	EPUBHTMLGenerator: map TextBox to <div>
+
+	This way e.g. image with caption is no longer lost from the text
+	generator. This generalizes image and textbox styles as "frame" styles.
+
+2017-11-10  Miklos Vajna  <vmiklos@collabora.co.uk>  [3d47458738729c86992a1ed0002726cba5ec315c]
+
+	EPUBImageManager: initial wrap type handling
+
+	You could assume that the wrap is the opposide of clear, but given it's
+	an attribute on the next element, they are the same at the end in case
+	of left and right.
+
+2017-11-09  Miklos Vajna  <vmiklos@collabora.co.uk>  [0f5073481b094562f2c78481475a660fb6826cdb]
+
+	EPUBImageManager: initial horizontal positioning
+
+	For now position everything to the left, except for explicit "right".
+
+2017-11-08  Miklos Vajna  <vmiklos@collabora.co.uk>  [094db625e36b91b57e152296a1f7db1bdcc682c5]
+
+	EPUBHTMLGenerator: add missing rel attribute for CSS reference
+
+	Turns out a number of readers (checked Calibre and Aldiko on Android) do
+	support taking formatting from an external CSS, but only in case this
+	attribute is present.
+
+2017-11-08  Miklos Vajna  <vmiklos@collabora.co.uk>  [801367ee905aa70bb2ba2ad5b8257cd2a25bed9b]
+
+	EPUBImageManager: add support for borders
+
+	The properties are on the frame, but the inner binary object emits the
+	"img" element that has the properties in XHTML. Solve this by
+	maintaining a stack of currently opened frames, with their properties.
+
+2017-11-06  Miklos Vajna  <vmiklos@collabora.co.uk>  [d5bd8c9078eeb63769ff1807be1a9571430eaed1]
+
+	EPUBTableStyleManager: handle table props
+
+	Other than column properties. Only width and relative width for now.
+
+2017-11-03  Miklos Vajna  <vmiklos@collabora.co.uk>  [20930e2d8151fd2ec44feb9cdb8ca502df99365f]
+
+	EPUBTableStyleManager: handle style:rel-column-width col prop
+
+	Previously only fixed width was supported, but relative width works
+	better for reflowable formats and ODF has markup to express this.
+
+2017-11-03  Miklos Vajna  <vmiklos@collabora.co.uk>  [85fe982b2ad158f6e050c15e4a59d51d863cc28d]
+
+	columWidths -> columnWidths
+
+
+2017-11-03  Miklos Vajna  <vmiklos@collabora.co.uk>  [45bf16a8b384010814148538d86ee584b9295c7a]
+
+	Witdh -> Width
+
+
+2017-11-02  Miklos Vajna  <vmiklos@collabora.co.uk>  [6c8e86ccebb11df7ece32d10da2894c6698c5515]
+
+	EPUBTableStyleManager: witdh -> width
+
+
+2017-10-31  Miklos Vajna  <vmiklos@collabora.co.uk>  [258dcc4a98405238f4e32f89d122a7ccbb9a1357]
+
+	EPUBTableStyleManager: handle EPUB_STYLES_METHOD_INLINE for cells
+
+	So that a typical table has an empty CSS when requested.
+
+2017-10-31  Miklos Vajna  <vmiklos@collabora.co.uk>  [c5e32608ecea8410b11760284d49e1f1958c6f75]
+
+	EPUBTableStyleManager: handle EPUB_STYLES_METHOD_INLINE for rows
+
+	This was working for paragraphs and spans only previously.
+
+2017-10-31  Miklos Vajna  <vmiklos@collabora.co.uk>  [f3a04df200d818b4aaa9d54910b670cd6cf3149f]
+
+	EPUBHTMLGenerator: librevenge:type -> xlink:type
+
+	That's what libetonyek and LO's librevenge producer generates, also
+	matches librevenge documentation. This isn't really a behavior change,
+	just makes the warning go away in the xlink case.
+
+2017-10-31  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [2c6375ab025f61e8412b6e63998a7b89084d09f4]
+
+	doxygen -u
+
+
+2017-10-26  Miklos Vajna  <vmiklos@collabora.co.uk>  [2349199cc17a989ec2491245f446241dbfc30c50]
+
+	Use auto when declaring iterators and when initializing with a cast
+
+
+2017-10-18  Miklos Vajna  <vmiklos@collabora.co.uk>  [c5bb9ad8922c9f537f0d613d42c33487717455c3]
+
+	EPUBHTMLGenerator: better handling of tabs
+
+	Mapping ODF/librevenge tab to \t in HTML is not a great idea, as it's
+	ignorable whitespace. Go with NBSPs and a breakable space instead, that
+	is much closer visually (15 is just an arbitrary number, it's what MS
+	Word uses in its HTML export, LO Writer HTML export doesn't handle
+	this).
+
+	Adapt the empty paragraph case to also use NBSP for consistency.
+
+2017-10-18  Miklos Vajna  <vmiklos@collabora.co.uk>  [8166fc972e3d4b930ad0baab164f99b3c717252e]
+
+	EPUBTextGenerator: handle headings inside sections
+
+	On one hand, we don't want to split inside a section as there might be
+	elements we need to close/open at split boundary, OTOH this is currently
+	not a problem as we don't produce any output for sections.
+
+	So remove the level management for sections (this way allowing headings
+	to split inside sections), let's get back to this when there is a
+	concept how e.g. multiple columns would be represented in EPUB.
+
+	Use case is when sections are used to just group paragraph together and
+	mark all of them read-only: in this case it's unexpected that headings
+	are handled differently to not-in-section ones.
+
+2017-10-17  Miklos Vajna  <vmiklos@collabora.co.uk>  [383f315b067e9fc1aa840913c581e7451949c2db]
+
+	EPUBHTMLGenerator: better handling of empty paragraphs
+
+	The ODF/librevenge concept is that empty paragraphs still take their
+	vertical space, i.e. inserting lots of them is a (poor) equivalent of a
+	page break.
+
+	HTML collapses empty paragraphs by default, so empty paragraphs need
+	some content to preserve this effect. Do the same trick what LibreOffice
+	Writer does: if the text has no content, add a <br/> element inside the
+	paragraph.
+
+2017-10-17  Miklos Vajna  <vmiklos@collabora.co.uk>  [4f46bc715a5fc8a0e13bb1596f6f5dbb55ca0632]
+
+	EPUBSpanStyleManager: ignore underline type/style 'none'
+
+	This is similar to commit 7be89d1881e175182039ca93a1546d79933cab85
+	(EPUBSpanStyleManager: ignore line though type/style 'none',
+	2017-09-11).
+
+2017-09-18  Miklos Vajna  <vmiklos@collabora.co.uk>  [d8ee84ff50a6113f49105a70f946b23acfa2566f]
+
+	[ABI CHANGE] optionally support not writing formatting to CSS files
+
+	This should help a number of poor readers, which don't support the old
+	method. Examples:
+
+	- Sigil
+	- Readium
+	- Moon+ reader
+	- Calibre
+	- MS Edge
+
+2017-09-11  Miklos Vajna  <vmiklos@collabora.co.uk>  [7be89d1881e175182039ca93a1546d79933cab85]
+
+	EPUBSpanStyleManager: ignore line though type/style 'none'
+
+	In CSS this is a boolean property, but in ODF it's an enum, so map none
+	to false and everything else to true.
+
+2017-09-08  Miklos Vajna  <vmiklos@collabora.co.uk>  [7cf3c6541a61f9d74cd51fb2a01344df783cb26d]
+
+	EPUBTextGenerator: ignore invalid media types
+
+	This assumes there is no image type that is valid in EPUB2, but not in
+	EPUB3.
+
+2017-09-08  Miklos Vajna  <vmiklos@collabora.co.uk>  [bce7c05a18a4c5089d5ac77bc61b9f6978e7224b]
+
+	EPUBHTMLGenerator: write un-escaped NBSP
+
+	Package implementations are supposed to take care of escaping, like it
+	was already a requirement for normal text.
+
+2017-09-04  Miklos Vajna  <vmiklos@collabora.co.uk>  [7e3b5186616326534b1ae95c6d2d188c5e522c7f]
+
+	EPUBGenerator: always write author and title
+
+	Some EPUB3 readers categorize books by author and then title, so if
+	these are empty, then it's next to impossible to reach the export result
+	there.
+
+2017-08-25  Miklos Vajna  <vmiklos@collabora.co.uk>  [143a470f190aaf2f420d2f84b5f08e9b01b40473]
+
+	Export generator
+
+
+2017-08-25  Miklos Vajna  <vmiklos@collabora.co.uk>  [e012273d304e5f70b96e53712239efabdacdb065]
+
+	EPUBTextGeneratorTest: clean up unintentional Hungarian notation
+
+
+2017-08-24  Miklos Vajna  <vmiklos@collabora.co.uk>  [28e5e30c20aba54dff6505df4c03d6a3da0ee0f3]
+
+	EPUBHTMLGenerator: sanitize URLs a bit in openLink()
+
+	epubcheck warns on this:
+
+		WARNING(RSC-023): large.epub/OEBPS/sections/section0018.xhtml(2,5171): The URL 'https:///www.fsf.org' is missing 1 slash(es) '/' after the protocol 'https:'
+
+2017-08-24  Miklos Vajna  <vmiklos@collabora.co.uk>  [89ae3e392890b9360d271f1c1796cb27e36be26f]
+
+	EPUBTextGenerator: empty mime type is the same as no mime type
+
+	epubcheck says:
+
+		ERROR(RSC-005): image.epub/OEBPS/content.opf(11,69): Error while parsing file: value of attribute "media-type" is invalid; must be a string matching the regular expression "[a-zA-Z0-9!#$&+\-\^_]+/[a-zA-Z0-9!#$&+\-\^_]+.*"
+
+2017-08-23  Miklos Vajna  <vmiklos@collabora.co.uk>  [f23707df299cb91643a8af6877596a35bd3e6850]
+
+	Add EPUB_SPLIT_METHOD_PAGE_BREAK testcase
+
+	Fails with commit 39470cf360cfc67f2dd078646162a63168a84c05
+	(EPUBSplitGuard: fix tracking current size, 2017-08-15) reverted.
+
+2017-08-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [12a583e980cf97ee4fa82650ec77a8278074c256]
+
+	EPUBHTMLGenerator image validation fix testcase
+
+	Fails with the previous commit reverted.
+
+2017-08-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [1376b91046ad50f3a443b6fd4887252c1922870c]
+
+	EPUBHTMLGenerator: fix validation problem with non-page anchored images
+
+	In most cases (except for at-page anchored images) there is a paragraph
+	already opened, and writing <p> inside <span> results in a validation
+	error.
+
+	So just write <p> in case we're not in paragraph already.
+
+2017-08-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [2a0a1086fa782c478ba5babccc9b4663f4b658ae]
+
+	First chapter name special handling testcase
+
+	Fails with the previous commit.
+
+2017-08-22  Miklos Vajna  <vmiklos@collabora.co.uk>  [a4e85e191813e7c8f4e6b5bcf2458504f9d06aeb]
+
+	EPUB_SPLIT_METHOD_HEADING: fix unexpected first chapter name
+
+	If the structure of the document is like this:
+
+	 Heading 2
+	Heading 1
+	 Heading 2
+	Heading 1
+	 Heading 2
+
+	Then this resulted in 3 chapters: Section 1, Heading 1 and Heading 1.
+	The first one is unexpected; so in case we don't have a heading 1
+	paragraph for the first section, then fall back to any other heading.
+
+2017-08-17  Miklos Vajna  <vmiklos@collabora.co.uk>  [00d151dec482192b20729cc369f2a99fc1ce713e]
+
+	Add chapter names testcase
+
+	Fails with the previous commit reverted.
+
+2017-08-17  Miklos Vajna  <vmiklos@collabora.co.uk>  [8a3cc9733f567864ad0658cf1a25c60d5e7205a6]
+
+	EPUB_SPLIT_METHOD_HEADING: fix unexpected text in chapter names
+
+	We used to add text for all headings for the chapter name, but if we
+	split on heading 1, then text of heading2+ should not be included.
+
+2017-08-16  Miklos Vajna  <vmiklos@collabora.co.uk>  [576c2472e384ea1a71739b15f42561cd34de5bba]
+
+	EPUB_SPLIT_METHOD_HEADING: try to use real chapter names, not Section N
+
+	What users call "chapter title" is the text of a paragraph with an
+	outline level set.
+
+	To keep this simple just handle the text after opening such a paragraph,
+	but no other paragraph is opened, i.e. assume that in:
+
+	<para outline=y>A<para outline=n>B</para>C</para>
+
+	only A is interesting, but not B, neither C. (Which could happen with an
+	at-character anchored frame inside a heading text e.g.)
+
+2017-08-15  Miklos Vajna  <vmiklos@collabora.co.uk>  [3155cb6164f04fa8170dd9912c579ad90586c8a8]
+
+	EPUBTextGenerator: handle EPUB_SPLIT_METHOD_HEADING
+
+	It seems to me this was unimplemented so far.
+
+2017-08-15  Miklos Vajna  <vmiklos@collabora.co.uk>  [39470cf360cfc67f2dd078646162a63168a84c05]
+
+	EPUBSplitGuard: fix tracking current size
+
+	In case incrementing size and split affects the reference size, the
+	current size won't be ever greather than zero in
+	EPUBSplitGuard::canSplit(), and it will always return false.
+
+	With this, EPUB_SPLIT_METHOD_PAGE_BREAK works again.
+
+2017-08-11  Miklos Vajna  <vmiklos@collabora.co.uk>  [c28f02f21a6d80ad258cf8f052705508567e2418]
+
+	Fix image mime-type key
+
+	libepubgen expected librevenge:mimetype, but:
+
+	1) LO's ODF output has loext:mime-type
+	2) libabw generates librevenge:mime-type
+	3) libodfgen expects librevenge:mime-type
+
+	So probably this one has to be adjusted.
+
+2017-08-11  Miklos Vajna  <vmiklos@collabora.co.uk>  [c8cba54a7025ee0f1129233912f6e9ceda254c64]
+
+	EPUB3: fix validation error with doc modified date format
+
+	ERROR(RSC-005): test.epub/OEBPS/content.opf(2,420): Error while parsing file: dcterms:modified illegal syntax (expecting: 'CCYY-MM-DDThh:mm:ssZ')
+
+	Both of them looked like XML date formats, but actually librevenge is
+	more precise, so truncate it.
+
+2017-08-11  Miklos Vajna  <vmiklos@collabora.co.uk>  [14da42819f1f96b87b2337da395e5ad6639dcebe]
+
+	EPUBGenerator: write language and modification date into content.opf
+
+	With this, all metadata which had a hardcoded value is now parsed and
+	the old values are just defaults.
+
+2017-08-11  Miklos Vajna  <vmiklos@collabora.co.uk>  [d855721de6b4e55fb0b2a02a6a1132802dba5f63]
+
+	EPUBGenerator: write title into content.opf
+
+
+2017-08-11  Miklos Vajna  <vmiklos@collabora.co.uk>  [c30bc184c18837203e9f249386711e9cd616c9f0]
+
+	EPUB3: write the deprecated NCX navication as well
+
+	<http://www.idpf.org/epub/30/spec/epub30-changes.html#sec-new-changed-nav>
+	"3.2 Navigation" says:
+
+		EPUB 3 Publications may include the EPUB 2 NCX for EPUB 2 Reading System
+		forward compatibility purposes.
+
+2017-08-10  Miklos Vajna  <vmiklos@collabora.co.uk>  [2e9e9af9f49a78cca75d3c862c8dd4b5f7cc7eb2]
+
+	Use .xhtml for XHTML content
+
+	The EPUB3 validator warns:
+
+	WARNING(HTM-014a): test30.epub/OEBPS/content.opf(2,718): XHTML Content Document file name 'OEBPS/sections/section0001.html' should have the extension '.xhtml'.
+
+	And it does not hurt for EPUB2, either.
+
+2017-08-10  Miklos Vajna  <vmiklos@collabora.co.uk>  [28090aa5d57162302122686cb020d4bf2231cab4]
+
+	EPUB3: implement navigation document
+
+	As
+	<http://www.idpf.org/epub/30/spec/epub30-changes.html#sec-new-changed-nav>
+	says, EPUB 3 defines a new grammar for navigation based on XHTML, which
+	replaces the old NCX grammar -- so use that in EPUB3 mode.
+
+	With this, a hello world input in EPUB3 mode results in 0 errors in the
+	validator.
+
+2017-08-09  Miklos Vajna  <vmiklos@collabora.co.uk>  [575a09f637b5afe4d61387c7be3c8b2b67039ccb]
+
+	EPUB3: add missing nav property on first HTML stream
+
+	ERROR(RSC-005): test30.epub/OEBPS/content.opf(2,459): Error while parsing file: Exactly one manifest item must declare the 'nav' property (number of 'nav' items: 0).
+
+	This is the last error in OEBPS/content.opf in case of EPUB3.
+
+2017-08-09  Miklos Vajna  <vmiklos@collabora.co.uk>  [cfd57f50c9d33781f90018d40902ccce68a13a5c]
+
+	EPUB3: write missing modification date
+
+	ERROR(RSC-005): test.epub/OEBPS/content.opf(2,236): Error while parsing file: package dcterms:modified meta element must occur exactly once
+
+	But not for EPUB2, which doesn't allow so.
+
+	(Similar story as with dc:title: later commit should read the this
+	optional info from librevenge.)
+
+2017-08-09  Miklos Vajna  <vmiklos@collabora.co.uk>  [862ec6735c25760edadf05d83717daaf65f39f99]
+
+	[ABI CHANGE] optionally support generating EPUB3 output
+
+	Versions are 20 and 30 to be consistent with
+	<https://github.com/idpf/epubcheck/tree/master/src/main/resources/com/adobe/epubcheck/schema/>.
+
+2017-08-09  Miklos Vajna  <vmiklos@collabora.co.uk>  [a4585b8f35c76472eb91688c9177b9f532c290d8]
+
+	EPUBGenerator: avoid empty dc:language element
+
+	Same story as with dc:title:
+
+	ERROR(RSC-005): test.epub/OEBPS/content.opf(2,362): Error while parsing file: character content of element "dc:language" invalid; must be an RFC 3066 language identifier
+
+	(This is a warning for EPUB2, but it'll be an error for EPUB3; this is optional
+	for ODF; later commit should read the this info, though.)
+
+2017-08-09  Miklos Vajna  <vmiklos@collabora.co.uk>  [aa71784fcee0404c2f136f035887ca4c52d0e756]
+
+	EPUBGenerator: avoid empty dc:title element
+
+	This is a warning for EPUB2, but it'll be an error for EPUB3:
+
+	ERROR(RSC-005): test.epub/OEBPS/content.opf(2,337): Error while parsing file: character content of element "dc:title" invalid; must be a string with length at least 1 (actual length was 0)
+
+	The problem is that for ODF/librevenge this element is optional, so work
+	it around by adding a zero-width space.
+
+	A later commit should read the optional title of declared with a
+	librevenge API call, though.
+
+2017-08-09  Miklos Vajna  <vmiklos@collabora.co.uk>  [8ca1fe2b9db9bacd6e868e69a0909a441fb6a7f8]
+
+	EPUBGenerator: avoid opf:scheme attribute when writing the UUID
+
+	This will be an error for EPUB3:
+
+	ERROR(RSC-005): test.epub/OEBPS/content.opf(2,292): Error while parsing file: found attribute "opf:scheme", but no attributes allowed here
+
+	But it's optional for EPUB2 already.
+
+2017-08-09  Miklos Vajna  <vmiklos@collabora.co.uk>  [17b4d0a2b595d1504f3d957268e2085ae0f80db7]
+
+	EPUBGenerator: avoid container version roundtrip to double
+
+	This will be an error for EPUB3:
+
+	ERROR(RSC-005): test.epub/META-INF/container.xml(2,85): Error while parsing file: value of attribute "version" is invalid; must be equal to "1.0"
+
+	But it does not hurt for EPUB2, either.
+
+2017-08-09  Miklos Vajna  <vmiklos@collabora.co.uk>  [8b43a3c1db56f11f661726476f4893ff0f974c7d]
+
+	EPUBGenerator: add missing include
+
+	This broke the MSVC build.
+
+2017-08-08  Miklos Vajna  <vmiklos@collabora.co.uk>  [9041ef42f9e0a5c4bc3b0a912d36683c4e10ca84]
+
+	EPUBHTMLManager: fix value of <navPoint playOrder"...">
+
+	<http://www.niso.org/workrooms/daisy/Z39-86-2005.html#NCXplay> "8.4.3
+	playOrder Attribute" says:
+
+		playOrder is a positive integer; the first playOrder value in a document
+		shall be 1.
+
+	So instead of writing an empty attribute, write the same number that's
+	already used for <navPoint id="...">.
+
+2017-08-08  Miklos Vajna  <vmiklos@collabora.co.uk>  [2e51fb9163bbc6b9a27fa524382c5aad9700dd0d]
+
+	EPUBGenerator: don't write empty guide element
+
+	<http://www.idpf.org/epub/20/spec/OPF_2.0.1_draft.htm#Section2.6> "2.6:
+	Guide" requires:
+
+		Within the package there may be one guide element, containing one or
+		more reference elements.
+
+	Given that we never wrote reference child-elements, just don't write the
+	guide element at all, especially seeing that it's deprecated in OPF3.
+
+2017-08-08  Miklos Vajna  <vmiklos@collabora.co.uk>  [96e9786f5aba1078251f36e58feefc8d953cdea0]
+
+	EPUBGenerator: fix validation error with empty dc:identifier element
+
+	<http://www.idpf.org/epub/31/spec/epub-packages.html#sec-opf-dcidentifier>
+	"3.4.3.2.1 The identifier Element" says that the character content is
+	not optional, so write it.
+
+2017-08-03  Miklos Vajna  <vmiklos@collabora.co.uk>  [a027c71d1c1d18e9fc0bc223c84203b0f480fbc3]
+
+	EPUBPackage: document insertCharacters vs insertText difference
+
+
+2017-08-02  Miklos Vajna  <vmiklos@collabora.co.uk>  [49f6461d4751d3b16e32ab8f9c93a3856b33be49]
+
+	m4: MSVC defines __cplusplus as 199711L still
+
+	See e.g.
+	<https://stackoverflow.com/questions/37503029/cplusplus-is-equal-to-199711-in-msvc-does-it-support-c11>,
+	on MSVC we can't depend on the value of __cplusplus, since that one is a
+	too low value, even if everything else works fine.
+
+2017-08-02  David Tardon  <dtardon@redhat.com>  [28b77fcf685e3c7a246297063273303ef4c87efb]
+
+	BUILD_EXTRA_DIST does not exist
+
+
+2017-08-02  David Tardon  <dtardon@redhat.com>  [e53039f89ccf49e3927d415a6e837e1de807dd4b]
+
+	these files are distributed automatically
+
+
+2017-08-02  David Tardon  <dtardon@redhat.com>  [e4fef18225f89b68077d6fad7a6dd6385d71ec73]
+
+	prepare for a release
+
+
+2017-08-02  David Tardon  <dtardon@redhat.com>  [a215111cbdd64c1c870cfd7b558eb9fad7733ee9]
+
+	look for macros in m4/
+
+
+2017-07-18  Miklos Vajna  <vmiklos@collabora.co.uk>  [fe5fb9ebe9714e5a833225b9643b9f3ddde9f07e]
+
+	Convert explicit for loops to range-based ones where possible
+
+	This is most useful in EPUBTableStyleManager::extractCellProperties() to
+	avoid repeating ourselves.
+
+2017-07-17  Miklos Vajna  <vmiklos@collabora.co.uk>  [37bbf7e7e8822a1be4ac4a48eaa85531015a6176]
+
+	Convert 0 to nullptr where it's used as a pointer value
+
+	To make the code easier to read, because this means the remaining zeros
+	all mean numbers.
+
+2017-07-14  Miklos Vajna  <vmiklos@collabora.co.uk>  [dba4dd2d2bd8cac2367a3ce0ff01ae5927db347d]
+
+	Mark overriding member functions as 'override'
+
+	This does not affect the generated code (API or ABI), but:
+
+	1) Makes sure that in case the signature of one of these functions would
+	change by accident, the build breaks as the function no longer overrides
+	a base function.
+
+	2) Makes the code readable by explicitly marking all overriding
+	functions as 'override', where previously the reader had to read the
+	interface of the base class(es) as well to find out if the function is
+	virtual or not.
+
+	3) Since 'override' implies 'virtual', remove the 'virtual' keyword
+	where 'override' is present.
+
+2017-07-14  Miklos Vajna  <vmiklos@collabora.co.uk>  [fc5b1e1fd8f7f6a5a20277ea4c74df2f862e0c24]
+
+	Remove unused using declarations
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [2af63eebee98bbf01cd0086192f8e83b9da5035f]
+
+	replace a dumb pointer by a smart one
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [425202b6e5ab68ec88bca17f10e70752d81fe8fd]
+
+	use std::stack for stack
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [20091543f3e0d8f8bb47afde28dace32c2c03673]
+
+	replace a dumb pointer by a smart one
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [ed44836767dd658bdffe866bee474e488c91ea44]
+
+	replace a dumb pointer by a smart one
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [c96c323ebc449232c82150c5668991143a4ed39a]
+
+	drop unused files
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [0b6dcd1668c9e028808e6d5b6b6a3b9acd29a28d]
+
+	drop dead code
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [5445474673a15d343a91770bf3befd8b24c8f91e]
+
+	replace boost::assign with C++11 code
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [6657770ce1c86788cfd98a46bc32a0cd68a57c40]
+
+	boost::unordered_map -> std::unordered_map
+
+	This conversion would look better if the standard actually bothered to
+	provide hash function for its container types...
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [fbb9844ec0de727f3683f0f483821da2a125e44b]
+
+	replace manual def. of int types by boost
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [170b454c446ecd42caf860c69757eb30403c40b5]
+
+	drop verbose debug
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [cec6405d9f946482534cb7087611f32ec73a4104]
+
+	boost::shared_ptr -> std::shared_ptr
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [e911706502f426eba9111b7bf6e9c942f2e98011]
+
+	use for-each loop
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [4c17c5677886d6ac93bc9a3772987ca7c780c85e]
+
+	drop unused boost headers from configure check
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [97bb74c589fefbc65ec8462cad87c5ff425f2ec2]
+
+	move check for __attribute__((format)) to configure
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [9a56b66b65ff9d7434688618a6ba7c095c18adfb]
+
+	switch to C++11
+
+
+2017-04-25  David Tardon  <dtardon@redhat.com>  [5e146e1d1c6a0fb8807fc3e13397189f873a50a7]
+
+	only ignore auto-updated files in m4
+
+
+2016-07-03  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [4ded0352c730b906db9a4dee8e52b7efa6272063]
+
+	-Werror=unused-function
+
+
+2015-12-27  David Tardon  <dtardon@redhat.com>  [2a25ba477bada25604cfc9855dbc2e151ae082b8]
+
+	print debug output to stderr
+
+
+2015-12-27  David Tardon  <dtardon@redhat.com>  [785a2452dcadd2ea6e27f3eadd29370715fe4a38]
+
+	simplify dist. and inst. of headers
+
+
+2015-03-12  David Tardon  <dtardon@redhat.com>  [28891005308793f507dd00c4c8c310817f9c7308]
+
+	add make target for astyle
+
+
+2015-03-12  David Tardon  <dtardon@redhat.com>  [d0f90f3f53ed3c42cf9db7b9e4b33dafda72e367]
+
+	do not assert
+
+
+2015-02-02  David Tardon  <dtardon@redhat.com>  [17f2b28d1e7961a3a60db9eeef0be83fe19c0705]
+
+	remove bashism
+
+
+2015-01-05  osnola  <alonso@loria.fr>  [10c72fd24b75684da4e068f4dd1704d05cef3200]
+
+	Merge libepubgen_@EPUBGEN_MAJOR_VERSION@_@EPUBGEN_MINOR_VERSION@_la_LIBADD definitions :-)
+
+
+2014-12-01  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [1cf137ab0d86311290832a1f36cf3fca7ea859d9]
+
+	Dist errors
+
+
+2014-11-24  David Tardon  <dtardon@redhat.com>  [b94f1e816ffd87d4d31c4a03f500befe9c6bbca0]
+
+	only export public symbols
+
+
+2014-11-24  David Tardon  <dtardon@redhat.com>  [6adad68441614bef8f56ea71eda175fa2e392317]
+
+	unused function
+
+
+2014-11-24  David Tardon  <dtardon@redhat.com>  [d58963141379dd8e0a0335645cc8ca50055df0b0]
+
+	add compile to .gitignore
+
+
+2014-07-10  David Tardon  <dtardon@redhat.com>  [95aa4c92480ed9a684c3e129ed795e1ea7b1fa07]
+
+	pass value by const ref
+
+
+2014-07-08  David Tardon  <dtardon@redhat.com>  [54a037324e591629319b58c1daf5108bf61e688b]
+
+	escaping should be done by the generator
+
+
+2014-07-08  Fridrich Štrba  <fridrich.strba@bluewin.ch>  [5529501d1486fc3916f102384bb7fb869f0d5300]
+
+	This will be escaped in writerperfect
+
+
+2014-07-05  David Tardon  <dtardon@redhat.com>  [6f44b89f82afd1f15febff78a51a567698c76afd]
+
+	add some TODO items
+
+
+2014-07-05  David Tardon  <dtardon@redhat.com>  [e7543ba616d2a81231503c488730a8f5c68d6ac3]
+
+	prepare for a release
+
+
+2014-07-05  David Tardon  <dtardon@redhat.com>  [603a762c5da3d1fb145b31d71542907e2da2c01b]
+
+	write README
+
+
+2014-07-05  David Tardon  <dtardon@redhat.com>  [e1d79ee3bb8f031b5949788941bd86baed607c0c]
+
+	improve documentation
+
+
+2014-07-05  David Tardon  <dtardon@redhat.com>  [981630b5be9d31bcd1e51ae39f7e9957b6166c00]
+
+	handle splitting to files on page break
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [316be1caa89177da9bf8140005fb32c7b9dfbc7d]
+
+	rename class to avoid confusion
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [1d3bc8c8f7bfb1db0e3536f51019b8a4ed2cf646]
+
+	use existing typedef
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [98bcac802c14815fbe0fb904bf0819f0000ad7b4]
+
+	drop unneeded include
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [50c660a825691a030aca5d23490cd928cd550946]
+
+	rename class; there will be no other HTML generators
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [40d0dd866539e3af2e6342a086b16e7a46e15cdd]
+
+	allow to register image handlers for all generators
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [10a52e2386c4c60ea32e68812505aebd65a91806]
+
+	add API for HTML splitting
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [600f784d0df2b2bcc1c42b97b39018ab69c2d1fd]
+
+	impl. ctors
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [c000ce3ffcc2b2667098ec93259e5b37dca4060f]
+
+	drop broken win32 project files
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [77a7fe0868ce13ffcef8ef96754cb07770923c03]
+
+	one-param. ctors should be explicit
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [90087f3165859d7a2972e87890c5f06ff300bd8f]
+
+	add support for embedded images and objects
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [c4548090a5a0765e8c52582883c1f5491d43557a]
+
+	handle text blocks of page-based interfaces
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [f0ff01bdf92bea628b323740afb4d028d5b00aec]
+
+	move handling of text size to the common class too
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [c9fb74c86096667338fdccfb8a734b36a50c0ed7]
+
+	provide common impl. for page-based generators
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [433f72f4c7edbb824527921ca55977c5397487a1]
+
+	distribute and install libepubgen-api.h
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [2b5d3fa1fa01ac5a588c9163387b07ba111753df]
+
+	put the common parts of EPUB creation to a class
+
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [a85587b1a6a5f62b5403fc255fbcdfd793e735ac]
+
+	add collecting class for page elements
+
+	For future use.
+
+2014-06-29  David Tardon  <dtardon@redhat.com>  [5bd80f1971ebe40312826139d5c47ca83d54fa51]
+
+	rename class
+
+
+2014-06-28  David Tardon  <dtardon@redhat.com>  [9daab5ce0acbb3af66b615203a25e7e7cb0d082c]
+
+	group the functions by purpose
+
+
+2014-06-28  David Tardon  <dtardon@redhat.com>  [36b775d40dd31b4a9ec3f27e74cbaffefc121525]
+
+	output to text files is useful after all
+
+	It can be used for writing SVG images.
+
+2014-06-28  David Tardon  <dtardon@redhat.com>  [6b945868291fa3a287afdfe547949d873e809ac2]
+
+	clean old cruft
+
+
+2014-06-28  David Tardon  <dtardon@redhat.com>  [8a3573a288cecb750e796fee13e77aea0af6e472]
+
+	add presentation generator (dummy impl. for now)
+
+
+2014-06-28  David Tardon  <dtardon@redhat.com>  [bb3f5b28660f870f8ed5ba802be3c2cc39ba4652]
+
+	add drawing generator (dummy impl. for now)
+
+
+2014-06-23  David Tardon  <dtardon@redhat.com>  [01d0e4bc5df67a9afb1a69dace5f0676bf8e22db]
+
+	bah, forgot to implement two functions
+
+
+2014-06-22  David Tardon  <dtardon@redhat.com>  [5755f94d17fd2c3e087fb71a9a610395ac31ae14]
+
+	split HTML content into smaller files
+
+
+2014-06-22  David Tardon  <dtardon@redhat.com>  [79fd359b7115ff2f2f41c95bb9e202c1d0481188]
+
+	there is no need to create text files in the package
+
+
+2014-06-22  David Tardon  <dtardon@redhat.com>  [994d733a9847b8dd6acfbd933abc0c02bdd46757]
+
+	struct -> class in forward decl
+
+
+2014-06-22  David Tardon  <dtardon@redhat.com>  [a846255a2f48c739ea26c53044ae79ac3bfbc3b1]
+
+	check for all used boost headers
+
+
+2014-06-22  David Tardon  <dtardon@redhat.com>  [f711a7f348b8dc5c066377f4848b135f785f3603]
+
+	keep CSS props in a map
+
+
+2014-06-22  David Tardon  <dtardon@redhat.com>  [a4b6632c0cde956546a4cc45995dd5ae08e9eee7]
+
+	add a separate interface functions for CSS files
+
+	This will replace the text functions in near future, as CSS is the only
+	text-based file that is needed.
+
+2014-06-22  David Tardon  <dtardon@redhat.com>  [49094cf981efd53c953a4b68cb409ad34db6034b]
+
+	write separate stylesheet file
+
+
+2014-06-22  David Tardon  <dtardon@redhat.com>  [b2f632bc0e866a6e86d1d506388015bf0075938d]
+
+	rename style generating classes
+
+
+2014-06-21  David Tardon  <dtardon@redhat.com>  [6a0965e2517192b922e5078f3f1f0bf1cd5d587e]
+
+	follow the recommendation from OCF 2.0.1
+
+
+2014-06-21  David Tardon  <dtardon@redhat.com>  [a74584212e46b56d5487ab2ff2d1d21888079d87]
+
+	reformat
+
+
+2014-06-21  David Tardon  <dtardon@redhat.com>  [859074650571b4ca6a04ea1a1d93756c78450efa]
+
+	start using path
+
+
+2014-06-21  David Tardon  <dtardon@redhat.com>  [394452d1d6f430a4146ca3feb5a1959a868dfe32]
+
+	add helper class for handling internal paths
+
+
+2014-06-21  David Tardon  <dtardon@redhat.com>  [cc9146c8190b68481e0b4430a679add226882547]
+
+	produce valid XHTML
+
+
+2014-06-21  David Tardon  <dtardon@redhat.com>  [9dbc267e70a7c92715f688b910fe66f8429148eb]
+
+	really insert images to the output
+
+
+2014-06-19  David Tardon  <dtardon@redhat.com>  [f9fd161967a677c495a6a37f241864e31b45f1ca]
+
+	coverity#12665 dereference null return value
+
+
+2014-06-15  David Tardon  <dtardon@redhat.com>  [b1866629b945f87c889bc8da7b6f05eded361107]
+
+	add support for images
+
+
+2014-06-15  David Tardon  <dtardon@redhat.com>  [bba55bc5e493012f3cc7ce57b47f5157f951929b]
+
+	handle manifest in a centralized way
+
+
+2014-06-15  David Tardon  <dtardon@redhat.com>  [4e3442bd9bd23ec73d7dc180f21e236635e0cef7]
+
+	simplify insertion of empty elements
+
+
+2014-06-15  David Tardon  <dtardon@redhat.com>  [6fad06043d60467f828051a6b216b094a1b9bf90]
+
+	simplify creation of elements without attributes
+
+
+2014-06-15  David Tardon  <dtardon@redhat.com>  [557e491ad757c3451f5c9da62084946a6c014fcd]
+
+	the typedef does not neet to be accessible from outside
+
+
+2014-06-13  David Tardon  <dtardon@redhat.com>  [5d30cbc9b4840c652d2449bcd19daf670eab617e]
+
+	produce conforming ePub 2.0
+
+
+2014-06-13  David Tardon  <dtardon@redhat.com>  [4fea820c2e35271258b5057d0b4fad183691aa16]
+
+	remove functions to better match purpose
+
+
+2014-06-11  David Tardon  <dtardon@redhat.com>  [0b5e300ac4997820f5f934a22e8b9cf074d1ab90]
+
+	write out ePub package
+
+
+2014-06-11  David Tardon  <dtardon@redhat.com>  [6763280ecad73b08524fd396584fa09e5c409fa1]
+
+	produce (nearly) valid XHTML
+
+
+2014-06-08  David Tardon  <dtardon@redhat.com>  [13155daa10b1bb595463c030cddec3e90f3a3db1]
+
+	copy HTML text generator from librevenge
+
+	I would really rather use librevenge-generators, but the code will need
+	some modifications. First thing, the generator produces HTML, not XHTML.
+	Second, it only produces one output file, while I need any number of
+	XHTML files and one CSS file. Last but not least, it drops images.
+
+2014-06-08  David Tardon  <dtardon@redhat.com>  [607828da0035cb4db6ad18402700ae26cf26ef77]
+
+	create a new project
+
